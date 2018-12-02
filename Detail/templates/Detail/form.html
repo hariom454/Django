@@ -1,0 +1,11 @@
+{% extends "Detail/base.html" %}
+
+{% block content %}
+<div>
+	<h3> Add movie details </h3>
+<form method = 'POST' action = '.' > {% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="Save">
+</form>
+</div>
+{% endblock %}
