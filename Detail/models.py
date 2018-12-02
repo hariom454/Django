@@ -19,7 +19,7 @@ class Producer(models.Model):
 class Movie(models.Model):
 	Name = models.CharField(max_length = 200)
 	Year_of_Release = models.DateField()
-	actor = models.ManyToManyField(Actor)
+	#actors = models.ManyToManyField(Actor)
 	producer = models.ForeignKey(Producer, on_delete = models.CASCADE, null = True, blank = True)
 	Plot = models.TextField()
 	#Poster = models.ImageField()

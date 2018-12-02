@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
+
 # Create your views here.
 from .models import Movie, Actor, Producer
 from .forms import MovieForm, ActorForm, ProducerForm
@@ -28,4 +29,9 @@ def movieFormView(request):
 
 def home_view(request):
 	obj = Movie.objects.all()
-	return render(request, 'Detail/home.html', {})
+	return render(request, 'Detail/home.html', {'obj':obj})
+
+def producerDetailView(request, my_id):
+	
+	obj = get_object_or_404(Producer, id=my_id)
+	return render(request, "Detail/producer_detail.html",{'obj':obj})

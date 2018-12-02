@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import home_view, movieFormView,actorFormView, producerFormView
+from .views import (home_view, movieFormView,actorFormView, producerFormView,
+	producerDetailView)
 urlpatterns = [
     path('', home_view, name = 'home'),
     path('newmovie/', movieFormView, name = 'new_movie'),
     path('newactor/', actorFormView, name = 'new_actor'),
     path('newproducer/', producerFormView, name = 'new_produer'),
+    path('producer/<int:my_id>/', producerDetailView, name = 'producer-detail'),
 ]
