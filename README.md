@@ -15,5 +15,5 @@ Just follow these basisc steps
 - run python manage.py createsuperuser  
 - run python manage.py runserver  
 
-### Now open localhost:8000 or 127.0.0.1:8000 on your browser  
+Now open localhost:8000 or 127.0.0.1:8000 on your browser  
 If you want to access admin then go to localhost:8000/admin  
