@@ -4,7 +4,7 @@ First install these things on your systm
 - pip 18.1  
 - virtualenv 15.1.0  
 - Now got to project's root folder and run following command in cmd or terminal  
-** pip install requirements.txt **  
+**pip install requirements.txt**  
 
 ## How to run this project   
 
