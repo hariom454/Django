@@ -7,6 +7,8 @@ class Actor(models.Model):
 	sex = models.CharField(max_length = 1, choices=SEX)
 	dob = models.DateField()
 	bio = models.TextField()
+	def __str__(self):
+		return self.name
 
 class Producer(models.Model):
 	name = models.CharField(max_length = 200)
@@ -14,6 +16,8 @@ class Producer(models.Model):
 	sex = models.CharField(max_length = 1, choices=SEX)
 	dob = models.DateField()
 	bio = models.TextField()
+	def __str__(self):
+		return self.name
 
 
 class Movie(models.Model):

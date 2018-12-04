@@ -14,11 +14,16 @@ def actorFormView(request):
 	return render(request, 'Detail/actor_form.html',{'form':form})
 
 def producerFormView(request):
-	form = ProducerForm(request.POST or None)
-
-	if form.is_valid():
-		form.save()
+	if request.method == "POST":
+		form = ProducerForm(request.POST)
+		if form.is_valid():
+			producer = form.save(commit=False)
+			producer.save()
+			return redirect('producer-detail', my_id=producer.id)
+	else:
 		form = ProducerForm()
+
+			
 	return render(request, 'Detail/producer_form.html',{'form':form})
 
 def movieFormView(request):
