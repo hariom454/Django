@@ -1,5 +1,7 @@
 {% extends "Detail/base.html" %}
-
+{% block title %}
+New Actor
+{% endblock %}
 {% block content %}
 <form method = 'POST' action = '.' > {% csrf_token %}
 {{form.as_p}}

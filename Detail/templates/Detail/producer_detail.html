@@ -1,5 +1,7 @@
 {% extends "Detail/base.html" %}
-
+{% block title %}
+{{obj.name}}
+{% endblock %}
 {% block content %}
 <h3> {{ obj.name }} </h3>
 <p> {{obj.sex}}, {{obj.dob}}</p>

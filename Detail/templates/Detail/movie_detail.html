@@ -1,0 +1,12 @@
+{% extends "Detail/base.html" %}
+{% block title %}
+{{obj.Name}}
+{% endblock %}
+{% block content %}
+<div class="col">
+<h2> {{obj.Name}} </h2>
+<p> {{ obj.Year_of_Release }} </p>
+<a href="{% url 'producer-detail' my_id=obj.producer.id %}" > {{ obj.producer.name }} </a>
+<p> {{obj.Plot}}</p>
+</div>
+{% endblock %}

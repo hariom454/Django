@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
+
 
 
 # Create your views here.
@@ -11,6 +12,7 @@ def actorFormView(request):
 		form.save()
 		form = ActorForm()
 	return render(request, 'Detail/actor_form.html',{'form':form})
+
 def producerFormView(request):
 	form = ProducerForm(request.POST or None)
 
@@ -20,10 +22,14 @@ def producerFormView(request):
 	return render(request, 'Detail/producer_form.html',{'form':form})
 
 def movieFormView(request):
-	form = MovieForm(request.POST or None)
-
-	if form.is_valid():
-		form.save()
+	#form = MovieForm(request.POST or None)
+	if request.method == "POST":
+		form = MovieForm(request.POST)
+		if form.is_valid():
+			movie = form.save(commit=False)
+			movie.save()
+			return redirect('movie-detail', mv_id=movie.id)
+	else:
 		form = MovieForm()
 	return render(request, 'Detail/form.html',{'form':form})
 
@@ -35,3 +41,6 @@ def producerDetailView(request, my_id):
 	
 	obj = get_object_or_404(Producer, id=my_id)
 	return render(request, "Detail/producer_detail.html",{'obj':obj})
+def movie_detail(request,mv_id):
+	obj = get_object_or_404(Movie, id=mv_id)
+	return render(request, 'Detail/movie_detail.html',{'obj':obj})
