@@ -16,15 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import (home_view, movieFormView,actorFormView, producerFormView,
-	producerDetailView, movie_detail,movie_edit,producer_edit,)
+	producerDetailView, movie_detail,movie_edit,producer_edit,actor_detail,
+	actor_edit,)
 urlpatterns = [
     path('', home_view, name = 'home'),
     path('newmovie/', movieFormView, name = 'new_movie'),
     path('newactor/', actorFormView, name = 'new_actor'),
-    path('newproducer/', producerFormView, name = 'new_produer'),
+    path('newproducer/', producerFormView, name = 'new_producer'),
     path('producer/<int:my_id>/', producerDetailView, name = 'producer-detail'),
     path('movie/<int:mv_id>/', movie_detail, name = 'movie-detail'),
     path('movie/<int:my_id>/edit/', movie_edit, name = 'movie-edit'),
     path('producer/<int:my_id>/edit/', producer_edit, name = 'producer-edit'),
+    path('actor/<int:my_id>/',actor_detail, name = 'actor-detail'),
+    path('actor/<int:my_id>/edit/', actor_edit, name='actor-edit'),
 
 ]

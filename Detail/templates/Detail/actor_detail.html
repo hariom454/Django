@@ -1,0 +1,10 @@
+{% extends "Detail/base.html" %}
+{% block title %}
+{{obj.name}}
+{% endblock %}
+{% block content %}
+<a class="btn btn-default" href="{% url 'actor-edit' my_id=obj.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+<h3> {{ obj.name }} </h3>
+<p> {{obj.sex}}, {{obj.dob}}</p>
+<p> {{obj.bio}}</p>
+{% endblock %}

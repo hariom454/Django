@@ -6,11 +6,16 @@ from django.shortcuts import render, get_object_or_404,redirect
 from .models import Movie, Actor, Producer
 from .forms import MovieForm, ActorForm, ProducerForm
 def actorFormView(request):
-	form = ActorForm(request.POST or None)
-
-	if form.is_valid():
-		form.save()
+	if request.method == "POST":
+		form = ActorForm(request.POST)
+		if form.is_valid():
+			actor = form.save(commit=False)
+			actor.save()
+			return redirect('actor-detail', my_id=actor.id)
+	else:
 		form = ActorForm()
+
+			
 	return render(request, 'Detail/actor_form.html',{'form':form})
 
 def producerFormView(request):
@@ -41,6 +46,10 @@ def movieFormView(request):
 def home_view(request):
 	obj = Movie.objects.all()
 	return render(request, 'Detail/home.html', {'obj':obj})
+def actor_detail(request, my_id):
+	
+	obj = get_object_or_404(Actor, id=my_id)
+	return render(request, "Detail/actor_detail.html",{'obj':obj})
 
 def producerDetailView(request, my_id):
 	
@@ -73,3 +82,15 @@ def producer_edit(request, my_id):
     else:
         form = ProducerForm(instance=producer)
     return render(request, 'Detail/producer_form.html', {'form': form})
+
+def actor_edit(request, my_id):
+    actor = get_object_or_404(Actor, id=my_id)
+    if request.method == "POST":
+        form = ActorForm(request.POST, instance=actor)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('actor-detail', my_id=post.id)
+    else:
+        form = ActorForm(instance=actor)
+    return render(request, 'Detail/actor_form.html', {'form': form})

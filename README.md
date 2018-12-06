@@ -20,5 +20,4 @@ If you want to access admin then go to localhost:8000/admin
 
 ### TO Do List
 - Add actors to movies
-- Add button for adding new actor and producer
 - Validation
