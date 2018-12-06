@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import (home_view, movieFormView,actorFormView, producerFormView,
-	producerDetailView, movie_detail,)
+	producerDetailView, movie_detail,movie_edit,producer_edit,)
 urlpatterns = [
     path('', home_view, name = 'home'),
     path('newmovie/', movieFormView, name = 'new_movie'),
@@ -24,4 +24,7 @@ urlpatterns = [
     path('newproducer/', producerFormView, name = 'new_produer'),
     path('producer/<int:my_id>/', producerDetailView, name = 'producer-detail'),
     path('movie/<int:mv_id>/', movie_detail, name = 'movie-detail'),
+    path('movie/<int:my_id>/edit/', movie_edit, name = 'movie-edit'),
+    path('producer/<int:my_id>/edit/', producer_edit, name = 'producer-edit'),
+
 ]
