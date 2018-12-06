@@ -5,6 +5,9 @@ from django.shortcuts import render, get_object_or_404,redirect
 # Create your views here.
 from .models import Movie, Actor, Producer
 from .forms import MovieForm, ActorForm, ProducerForm
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def actorFormView(request):
 	if request.method == "POST":
 		form = ActorForm(request.POST)
@@ -18,6 +21,7 @@ def actorFormView(request):
 			
 	return render(request, 'Detail/actor_form.html',{'form':form})
 
+@login_required
 def producerFormView(request):
 	if request.method == "POST":
 		form = ProducerForm(request.POST)
@@ -31,6 +35,7 @@ def producerFormView(request):
 			
 	return render(request, 'Detail/producer_form.html',{'form':form})
 
+@login_required
 def movieFormView(request):
 	#form = MovieForm(request.POST or None)
 	if request.method == "POST":
@@ -46,19 +51,20 @@ def movieFormView(request):
 def home_view(request):
 	obj = Movie.objects.all()
 	return render(request, 'Detail/home.html', {'obj':obj})
+
 def actor_detail(request, my_id):
-	
 	obj = get_object_or_404(Actor, id=my_id)
 	return render(request, "Detail/actor_detail.html",{'obj':obj})
 
 def producerDetailView(request, my_id):
-	
 	obj = get_object_or_404(Producer, id=my_id)
 	return render(request, "Detail/producer_detail.html",{'obj':obj})
+
 def movie_detail(request,mv_id):
 	obj = get_object_or_404(Movie, id=mv_id)
 	return render(request, 'Detail/movie_detail.html',{'obj':obj})
 
+@login_required
 def movie_edit(request, my_id):
     movie = get_object_or_404(Movie, id=my_id)
     if request.method == "POST":
@@ -71,6 +77,7 @@ def movie_edit(request, my_id):
         form = MovieForm(instance=movie)
     return render(request, 'Detail/form.html', {'form': form})
 
+@login_required
 def producer_edit(request, my_id):
     producer = get_object_or_404(Producer, id=my_id)
     if request.method == "POST":
@@ -83,6 +90,7 @@ def producer_edit(request, my_id):
         form = ProducerForm(instance=producer)
     return render(request, 'Detail/producer_form.html', {'form': form})
 
+@login_required
 def actor_edit(request, my_id):
     actor = get_object_or_404(Actor, id=my_id)
     if request.method == "POST":

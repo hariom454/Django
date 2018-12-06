@@ -15,9 +15,15 @@
     
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
-      <li><a href="{% url 'new_movie' %}"> New Movie</a></li>
-      <li><a href="{% url 'new_actor' %}"> New Actor</a></li>
-      <li><a href="{% url 'new_producer' %}"> New Producer</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'new_movie' %}" class = 'top-menu'> New Movie</a></li>
+      <li><a href="{% url 'new_actor' %}" class = 'top-menu'> New Actor</a></li>
+      <li><a href="{% url 'new_producer' %}" class = 'top-menu'> New Producer</a></li>
+      <p align = "right" class = 'top-menu'> {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+      {% else %}
+      <a href="{% url 'login' %}" class="top-menu" align = "right"> Login <span class="glyphicon glyphicon-lock"></span></a>
+      {% endif %}
+
     </ul>
   </div>
 </nav>
