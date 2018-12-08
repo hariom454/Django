@@ -7,7 +7,7 @@
 **pip install requirements.txt**  
 
 ## How to run this project   
-
+Create a media directory inside Detail folder for storing the poster
 Just follow these basisc steps  
 - Open cmd or terminal in project's root directory  
 - run python manage.py migrate  
