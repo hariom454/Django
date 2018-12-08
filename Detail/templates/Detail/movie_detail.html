@@ -6,10 +6,16 @@
 <div class="col">
 	{% if user.is_authenticated %}
 	<a class="btn btn-default" href="{% url 'movie-edit' my_id=obj.id %}">Edit <span class="glyphicon glyphicon-pencil"></span></a>
+	<a class="btn btn-default" href="{% url 'movie-delete' my_id=obj.id %}">Remove<span class="glyphicon glyphicon-remove"></span></a>
+
 	{% endif %}
 <h2> {{obj.Name}} </h2>
+{% if obj.poster %}
+<img src="{{ obj.poster.url }}" width="500" align="right"/>
+{% endif %}
 <p> {{ obj.Year_of_Release }} </p>
 <a href="{% url 'producer-detail' my_id=obj.producer.id %}" > {{ obj.producer.name }} </a>
+
 <p> {{obj.Plot}}</p>
 </div>
 {% endblock %}

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from .views import (home_view, movieFormView,actorFormView, producerFormView,
 	producerDetailView, movie_detail,movie_edit,producer_edit,actor_detail,
-	actor_edit,)
+	actor_edit,movie_delete,producer_delete, actor_delete,)
 urlpatterns = [
     path('', home_view, name = 'home'),
     path('newmovie/', movieFormView, name = 'new_movie'),
@@ -29,5 +29,8 @@ urlpatterns = [
     path('producer/<int:my_id>/edit/', producer_edit, name = 'producer-edit'),
     path('actor/<int:my_id>/',actor_detail, name = 'actor-detail'),
     path('actor/<int:my_id>/edit/', actor_edit, name='actor-edit'),
+    path('movie/<int:my_id>/delete/', movie_delete, name ='movie-delete'),
+    path('actor/<int:my_id>/delete/', actor_delete, name ='actor-delete'),
+    path('producer/<int:my_id>/delete/',producer_delete, name ='producer-delete'),
 
 ]

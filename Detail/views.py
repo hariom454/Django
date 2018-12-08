@@ -39,7 +39,7 @@ def producerFormView(request):
 def movieFormView(request):
 	#form = MovieForm(request.POST or None)
 	if request.method == "POST":
-		form = MovieForm(request.POST)
+		form = MovieForm(request.POST, request.FILES or None)
 		if form.is_valid():
 			movie = form.save(commit=False)
 			movie.save()
@@ -68,7 +68,7 @@ def movie_detail(request,mv_id):
 def movie_edit(request, my_id):
     movie = get_object_or_404(Movie, id=my_id)
     if request.method == "POST":
-        form = MovieForm(request.POST, instance=movie)
+        form = MovieForm(request.POST,request.FILES or None, instance=movie)
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
@@ -102,3 +102,24 @@ def actor_edit(request, my_id):
     else:
         form = ActorForm(instance=actor)
     return render(request, 'Detail/actor_form.html', {'form': form})
+
+@login_required
+def movie_delete(request,my_id):
+
+	obj = get_object_or_404(Movie, id=my_id)
+	obj.delete()
+	return redirect('home')
+
+@login_required
+def actor_delete(request,my_id):
+
+	obj = get_object_or_404(Actor, id=my_id)
+	obj.delete()
+	return redirect('home')
+
+@login_required
+def producer_delete(request,my_id):
+
+	obj = get_object_or_404(Producer, id=my_id)
+	obj.delete()
+	return redirect('home')

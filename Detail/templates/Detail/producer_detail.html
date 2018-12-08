@@ -5,6 +5,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <a class="btn btn-default" href="{% url 'producer-edit' my_id=obj.id %}"> Edit <span class="glyphicon glyphicon-pencil"></span></a>
+<a class="btn btn-default" href="{% url 'producer-delete' my_id=obj.id %}">Remove<span class="glyphicon glyphicon-remove"></span></a>
 {% endif %}
 <h3> {{ obj.name }} </h3>
 <p> {{obj.sex}}, {{obj.dob}}</p>

@@ -26,5 +26,5 @@ class Movie(models.Model):
 	#actors = models.ManyToManyField(Actor)
 	producer = models.ForeignKey(Producer, on_delete = models.CASCADE, null = True, blank = True)
 	Plot = models.TextField()
-	#poster = models.ImageField()
+	poster = models.ImageField(upload_to = 'poster', blank = True)
 	
