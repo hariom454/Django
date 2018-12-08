@@ -4,6 +4,7 @@
 <div class = "col">
 
 	{% for movie in obj %}
+	<div class = "row" style= "margin-left:10px;">
 	<h2> <a href = "{% url 'movie-detail' mv_id=movie.id %}">{{movie.Name}} </a></h2>
 	{% if movie.poster %}
 	<img src="{{ movie.poster.url }}" width="180" height="220" align = 'right'/>
@@ -12,7 +13,7 @@
 	<a href="{% url 'producer-detail' my_id=movie.producer.id %}" > {{ movie.producer.name }} </a>
 	
 	<p> {{movie.Plot}}</p>
-	
+	</div>
 	{% endfor %}
 </div>
 {% endblock %}
