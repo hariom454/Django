@@ -23,7 +23,7 @@ class MovieForm(forms.ModelForm):
 	#year_of_release = forms.DateField()
 	class Meta:
 		model = Movie
-		fields = ['Name', 'Year_of_Release','producer', 'Plot', 'poster']
+		fields = ['Name', 'Year_of_Release','actor','producer', 'Plot', 'poster']
 		widgets = {
             'Year_of_Release': DateInput()
         }

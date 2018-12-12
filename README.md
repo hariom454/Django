@@ -18,6 +18,7 @@ Just follow these basisc steps
 Now open localhost:8000 or 127.0.0.1:8000 on your browser  
 If you want to access admin then go to localhost:8000/admin  
 
-### TO Do List
-- Add actors to movies
-- Validation
+### TO Do List  
+- Add more than one actor or producer to movie  
+- Validation  
+- Add new actor or producer which is not present in database at the time of movie adding   
